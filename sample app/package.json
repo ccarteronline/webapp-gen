@@ -1,0 +1,17 @@
+{
+  "name": "sample-app-built",
+  "version": "1.0.1",
+  "description": "A sample application built",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main",
+    "postinstall": "bower install"
+  },
+  "author": "Chris Carter",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "bower": "*",
+    "express": "*"
+  }
+}

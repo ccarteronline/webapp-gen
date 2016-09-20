@@ -1,0 +1,15 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "An app that generates files",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main"
+  },
+  "author": "Chris Carter",
+  "license": "ISC",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "prompt": "^1.0.0"
+  }
+}
