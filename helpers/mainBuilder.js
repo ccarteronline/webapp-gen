@@ -21,7 +21,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 http.listen(port, function(){
-    console.log('listening on: ' + port);
+    console.log('Load app at: http://localhost:' + port);
 });`;
     module.exports = {
         buildMainFile: function () {

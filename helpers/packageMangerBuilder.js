@@ -4,6 +4,7 @@
     var packageJson = {
         'name': 'generatorApp',
         'version': '1.0.0',
+        'private': true,
         'description': 'An app that generates files',
         'main': 'main.js',
         'scripts': {
@@ -12,9 +13,9 @@
         'author': 'Chris Carter',
         'license': 'ISC',
         'dependencies': {
-            'body-parser': '*',
-            'bower': '*',
-            'express': '*'
+            'body-parser': '^1.15.2',
+            'bower': '^1.7.9',
+            'express': '^4.14.0'
         }
     };
 
@@ -34,10 +35,10 @@
             'tests'
         ],
         'dependencies': {
-            'jquery': '*',
-            'angular': '*',
-            'angular-mocks': '*',
-            'bootstrap': '*'
+            'jquery': '^3.1.0',
+            'angular': '^1.5.8',
+            'angular-mocks': '^1.5.8',
+            'bootstrap': '^3.3.7'
         }
     };
 
