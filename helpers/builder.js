@@ -114,6 +114,9 @@
         var path = 'dist/' + app.name + '/public';
         var indexBuilder = require('./indexBuilder');
         var moduleBuilder = require('./moduleBuilder');
+        var ctrlBuilder = require('./ctrlBuilder');
+        var cssBuilder = require('./cssBuilder');
+
         mkdirp(path, function (err) {
             if (err) {
                 return console.log(err);
@@ -127,11 +130,11 @@
                     }
                 });
                 // build js folder
-                mkdirp(path+'/js', function (err) {
+                mkdirp(path+'/js/controllers', function (err) {
                     if (err) {
                         return console.log(err);
                     } else {
-                        // build inner app.js file
+                        // Build inner app.js file
                         fs.writeFile((path + '/js/app.js'), moduleBuilder.buildAppModule(app.name), function (err) {
                             if (err) {
                                 return console.log(err);
@@ -140,7 +143,14 @@
                             }
                         });
 
-                        //TODO: Build out test angular controller
+                        // Build out an angular controller
+                        fs.writeFile((path + '/js/controllers/testCtrl.js'), ctrlBuilder.buidCtrlFile(app.name), function (err) {
+                            if (err) {
+                                return console.log(err);
+                            } else {
+                                console.log('Created: testCtrl.js file');
+                            }
+                        });
                     }
                 });
 
@@ -149,9 +159,14 @@
                     if (err) {
                         return console.log(err);
                     } else {
-                        // build inner css fies
-
-                        //TODO: Build out custom css files for starter app
+                        // Build out custom css file
+                        fs.writeFile((path + '/css/main.css'), cssBuilder.buildCss(), function (err) {
+                            if (err) {
+                                return console.log(err);
+                            } else {
+                                console.log('Created: main.css file');
+                            }
+                        });
                     }
                 });
             }

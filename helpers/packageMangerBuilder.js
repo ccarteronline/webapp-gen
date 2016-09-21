@@ -36,7 +36,8 @@
         'dependencies': {
             'jquery': '*',
             'angular': '*',
-            'angular-mocks': '*'
+            'angular-mocks': '*',
+            'bootstrap': '*'
         }
     };
 
