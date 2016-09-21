@@ -9,6 +9,8 @@
   "author": "Chris Carter",
   "license": "ISC",
   "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-zip": "^3.2.0",
     "mkdirp": "^0.5.1",
     "prompt": "^1.0.0"
   }
