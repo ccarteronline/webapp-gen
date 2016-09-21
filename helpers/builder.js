@@ -3,6 +3,12 @@
     var prompt = require('prompt');
     var fs = require('fs');
     var mkdirp = require('mkdirp');
+    var packageJsonBuilder = require('./packageMangerBuilder');
+    var mainBuilder = require('./mainBuilder');
+    var indexBuilder = require('./indexBuilder');
+    var moduleBuilder = require('./moduleBuilder');
+    var ctrlBuilder = require('./ctrlBuilder');
+    var cssBuilder = require('./cssBuilder');
     var app = {
         name: 'my-app',
         version: '0.0.0',
@@ -21,13 +27,15 @@
                 name: {
                     description: ('Enter the name of your app ('+app.name+')'),
                     type: 'string',
-                    message: 'Use lower case and dashes (my-app)',
+                    message: 'Use lower case or dashes (my-app)',
+                    pattern: /^[a-z\-]+$/,
                     required: true
                 },
                 version: {
                     description: ('Enter the version of your app (Version: '+app.version+')'),
                     type: 'string',
                     message: 'Example: 1.0.0',
+                    pattern: /^(\d+\.)?(\d+\.)?(\*|\d+)$/,
                     required: true
                 },
                 description: {
@@ -40,6 +48,7 @@
                     description: 'Who is the author? ('+app.author+')',
                     type: 'string',
                     message: 'Please provide an author',
+                    pattern: /^[a-zA-Z\s\-]+$/,
                     required: true
                 }
             }
@@ -64,7 +73,7 @@
 
     function buildPackageManagers () {
         var path = 'dist/'+app.name;
-        var packageJsonBuilder = require('./packageMangerBuilder');
+
         // Make the app directory
         mkdirp(path, function (err) {
             if (err) {
@@ -99,7 +108,7 @@
 
     function buildMainFile () {
         var path = 'dist/' + app.name;
-        var mainBuilder = require('./mainBuilder');
+
         fs.writeFile((path + '/main.js'), mainBuilder.buildMainFile(), function (err) {
             if (err) {
                 return console.log(err);
@@ -112,10 +121,6 @@
 
     function buildPublicFilesAndFolders () {
         var path = 'dist/' + app.name + '/public';
-        var indexBuilder = require('./indexBuilder');
-        var moduleBuilder = require('./moduleBuilder');
-        var ctrlBuilder = require('./ctrlBuilder');
-        var cssBuilder = require('./cssBuilder');
 
         mkdirp(path, function (err) {
             if (err) {
@@ -129,7 +134,8 @@
                         console.log('Created: index.html file');
                     }
                 });
-                // build js folder
+
+                // Build js folder
                 mkdirp(path+'/js/controllers', function (err) {
                     if (err) {
                         return console.log(err);
@@ -154,7 +160,7 @@
                     }
                 });
 
-                // build css folder
+                // Build css folder
                 mkdirp(path+'/css', function (err) {
                     if (err) {
                         return console.log(err);
