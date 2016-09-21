@@ -72,7 +72,7 @@
     };
 
     function buildPackageManagers () {
-        var path = 'dist/'+app.name;
+        var path = 'gen-apps/'+app.name;
 
         // Make the app directory
         mkdirp(path, function (err) {
@@ -107,7 +107,7 @@
     };
 
     function buildMainFile () {
-        var path = 'dist/' + app.name;
+        var path = 'gen-apps/' + app.name;
 
         fs.writeFile((path + '/main.js'), mainBuilder.buildMainFile(), function (err) {
             if (err) {
@@ -120,7 +120,7 @@
     };
 
     function buildPublicFilesAndFolders () {
-        var path = 'dist/' + app.name + '/public';
+        var path = 'gen-apps/' + app.name + '/public';
 
         mkdirp(path, function (err) {
             if (err) {

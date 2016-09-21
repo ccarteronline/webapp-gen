@@ -3,9 +3,9 @@ const zip = require('gulp-zip');
 const builder = require('./helpers/builder');
 
 gulp.task('zip', () => {
-    return gulp.src('dist/**/*')
-        .pipe(zip('webapp.gen.apps.zip'))
-        .pipe(gulp.dest('dist/'));
+    return gulp.src('gen-apps/**/*')
+        .pipe(zip('gen.apps.zip'))
+        .pipe(gulp.dest('gen-apps/'));
 });
 
 gulp.task('watch', () => {
