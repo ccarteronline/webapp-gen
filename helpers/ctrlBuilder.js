@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-    var appName;
 
     module.exports = {
         buidCtrlFile: function (appName) {
@@ -13,7 +12,7 @@
 
         function TestCtrl ($scope) {
             var vm = this;
-            vm.introTitle = 'Bootstrap starter template';
+            vm.introTitle = 'Welcome to ` + appName + `';
             vm.subHeaderText = 'Use this document as a way to quickly start any new project.';
             vm.list = [
                 {

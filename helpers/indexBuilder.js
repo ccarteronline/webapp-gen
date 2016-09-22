@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-    var appName;
 
     module.exports = {
         buildIndexFile: function (appName) {

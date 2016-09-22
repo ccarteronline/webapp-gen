@@ -1,9 +1,8 @@
 (function() {
     'use strict';
-    var appName;
 
     module.exports = {
-        buildCss: function (appName) {
+        buildCss: function () {
             var css =
 `.mainContent {
     margin: 0 auto;

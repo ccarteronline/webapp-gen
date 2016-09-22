@@ -9,6 +9,8 @@
     var moduleBuilder = require('./moduleBuilder');
     var ctrlBuilder = require('./ctrlBuilder');
     var cssBuilder = require('./cssBuilder');
+    var unitTestBuilder = require('./unitTestBuilder');
+    var karmaConfigBuilder = require('./karmaConfigBuilder');
     var app = {
         name: 'my-app',
         version: '0.0.0',
@@ -171,8 +173,38 @@
                                 return console.log(err);
                             } else {
                                 console.log('Created: main.css file');
+                                buildUnitTestFiles();
                             }
                         });
+                    }
+                });
+            }
+        });
+    };
+
+    function buildUnitTestFiles () {
+        var path = 'gen-apps/' + app.name;
+
+        // Build out a karma configuration file
+        fs.writeFile((path+'/karma.conf.js'), karmaConfigBuilder.buildConfig(), function (err) {
+            if (err) {
+                return console.log(err);
+            } else {
+                console.log('Created: karma.conf.js file');
+            }
+        });
+
+        // Build the directory for unit tests and place a test in it
+        mkdirp((path + '/test'), (err) => {
+            if (err) {
+                return console.log(err);
+            } else {
+                // Build out unit test file
+                fs.writeFile((path+'/test/testCtrl.test.js'), unitTestBuilder.buildTest(app.name), function (err) {
+                    if (err) {
+                        return console.log(err);
+                    } else {
+                        console.log('Created: test/testCtrl.test.js file');
                     }
                 });
             }

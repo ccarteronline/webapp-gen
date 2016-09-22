@@ -16,6 +16,15 @@
             'body-parser': '^1.15.2',
             'bower': '^1.7.9',
             'express': '^4.14.0'
+        },
+        'devDependencies': {
+          'jasmine-core': '^2.5.2',
+          'karma': '^1.3.0',
+          'karma-chrome-launcher': '^2.0.0',
+          'karma-coverage': '^1.1.1',
+          'karma-jasmine': '^1.0.2',
+          'karma-phantomjs-launcher': '^1.0.2',
+          'karma-spec-reporter': '0.0.26'
         }
     };
 
@@ -35,11 +44,11 @@
             'tests'
         ],
         'dependencies': {
-            'jquery': '^3.1.0',
-            'angular': '^1.5.8',
-            'angular-mocks': '^1.5.8',
-            'bootstrap': '^3.3.7'
-        }
+    		'jquery': '^3.1.0',
+    		'angular': '^1.5.8',
+    		'angular-mocks': '^1.5.8',
+    		'bootstrap': '^3.3.7'
+    	}
     };
 
     function changeName (newName) {
