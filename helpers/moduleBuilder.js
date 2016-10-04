@@ -1,8 +1,8 @@
-(function() {
+(() => {
     'use strict';
     module.exports = {
-        buildAppModule: function (appName) {
-            var appJS =
+        buildAppModule: (appName) => {
+            let appJS =
 `(function() {
     'use strict';
     angular

@@ -1,9 +1,9 @@
-(function() {
+(() => {
     'use strict';
 
     module.exports = {
-        buildCss: function () {
-            var css =
+        buildCss: () => {
+            let css =
 `.mainContent {
     margin: 0 auto;
     margin-top: 85px;

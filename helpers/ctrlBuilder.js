@@ -1,9 +1,9 @@
-(function() {
+(() => {
     'use strict';
 
     module.exports = {
-        buidCtrlFile: function (appName) {
-            var ctrl =
+        buidCtrlFile: (appName) => {
+            let ctrl =
 `(function () {
     'use strict';
     angular

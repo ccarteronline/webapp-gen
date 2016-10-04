@@ -1,7 +1,7 @@
-(function() {
+(() => {
     'use strict';
 
-    var packageJson = {
+    let packageJson = {
         'name': 'generatorApp',
         'version': '1.0.0',
         'private': true,
@@ -28,7 +28,7 @@
         }
     };
 
-    var bowerJson = {
+    let bowerJson = {
         'name': 'sample-app-built',
         'description': 'A sample application built',
         'main': 'main.js',
@@ -71,14 +71,14 @@
     };
 
     module.exports = {
-        changeName: function (newName) { changeName(newName) },
-        changeVersion: function (newVersion) { changeVersion(newVersion) },
-        changeDescription: function (newDescription) { changeDescription(newDescription) },
-        changeAuthor: function (newAuthor) { changeAuthor(newAuthor) },
-        buildPackageJsonFile: function () {
+        changeName: (newName) => { changeName(newName) },
+        changeVersion: (newVersion) => { changeVersion(newVersion) },
+        changeDescription: (newDescription) => { changeDescription(newDescription) },
+        changeAuthor: (newAuthor) => { changeAuthor(newAuthor) },
+        buildPackageJsonFile: () => {
             return JSON.stringify(packageJson, null, '\t');
         },
-        buildBowerJsonFile: function () {
+        buildBowerJsonFile: () => {
             return JSON.stringify(bowerJson, null, '\t');
         }
     };

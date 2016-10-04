@@ -1,6 +1,6 @@
-(function() {
+(() => {
     'use strict';
-    var mainJS =
+    let mainJS =
 `var express = require('express');
 var app = express();
 var http = require('http').Server(app);
@@ -24,7 +24,7 @@ http.listen(port, function(){
     console.log('Load app at: http://localhost:' + port);
 });`;
     module.exports = {
-        buildMainFile: function () {
+        buildMainFile: () => {
             return mainJS;
         }
     };

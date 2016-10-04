@@ -1,18 +1,18 @@
-(function() {
+(() => {
     'use strict';
-    var prompt = require('prompt');
-    var fs = require('fs');
-    var mkdirp = require('mkdirp');
-    var winston = require('winston');
-    var packageJsonBuilder = require('./packageMangerBuilder');
-    var mainBuilder = require('./mainBuilder');
-    var indexBuilder = require('./indexBuilder');
-    var moduleBuilder = require('./moduleBuilder');
-    var ctrlBuilder = require('./ctrlBuilder');
-    var cssBuilder = require('./cssBuilder');
-    var unitTestBuilder = require('./unitTestBuilder');
-    var karmaConfigBuilder = require('./karmaConfigBuilder');
-    var app = {
+    const prompt = require('prompt');
+    const fs = require('fs');
+    const mkdirp = require('mkdirp');
+    const winston = require('winston');
+    const packageJsonBuilder = require('./packageMangerBuilder');
+    const mainBuilder = require('./mainBuilder');
+    const indexBuilder = require('./indexBuilder');
+    const moduleBuilder = require('./moduleBuilder');
+    const ctrlBuilder = require('./ctrlBuilder');
+    const cssBuilder = require('./cssBuilder');
+    const unitTestBuilder = require('./unitTestBuilder');
+    const karmaConfigBuilder = require('./karmaConfigBuilder');
+    let app = {
         name: 'my-app',
         version: '0.0.0',
         description: 'A short description',
@@ -24,8 +24,8 @@
     };
 
     function createNameAndVersion () {
-        var that = this;
-        var schema = {
+        let that = this;
+        let schema = {
             properties: {
                 name: {
                     description: ('Enter the name of your app ('+app.name+')'),
@@ -57,7 +57,7 @@
             }
         };
 
-        prompt.get(schema, function (err, result) {
+        prompt.get(schema, (err, result) => {
             if (err) {
                 console.error(err);
             } else {
@@ -75,10 +75,10 @@
     };
 
     function buildPackageManagers () {
-        var path = 'gen-apps/'+app.name;
+        let path = 'gen-apps/'+app.name;
 
         // Make the app directory
-        mkdirp(path, function (err, data) {
+        mkdirp(path, (err, data) => {
             if (err) {
                 console.error(err);
             } else {
@@ -90,7 +90,7 @@
                 packageJsonBuilder.changeDescription(app.description);
                 packageJsonBuilder.changeAuthor(app.author);
                 // Write package.json file.
-                fs.writeFile((path + '/package.json'), packageJsonBuilder.buildPackageJsonFile(), function (err) {
+                fs.writeFile((path + '/package.json'), packageJsonBuilder.buildPackageJsonFile(), (err) => {
                     if (err) {
                         console.error(err);
                     } else {
@@ -98,7 +98,7 @@
                     }
                 });
                 // Write bower.json file.
-                fs.writeFile((path + '/bower.json'), packageJsonBuilder.buildBowerJsonFile(), function (err) {
+                fs.writeFile((path + '/bower.json'), packageJsonBuilder.buildBowerJsonFile(), (err) => {
                     if (err) {
                         console.error(err);
                     } else {
@@ -111,9 +111,9 @@
     };
 
     function buildMainFile () {
-        var path = 'gen-apps/' + app.name;
+        let path = 'gen-apps/' + app.name;
 
-        fs.writeFile((path + '/main.js'), mainBuilder.buildMainFile(), function (err) {
+        fs.writeFile((path + '/main.js'), mainBuilder.buildMainFile(), (err) => {
             if (err) {
                 console.error(err);
             } else {
@@ -124,14 +124,14 @@
     };
 
     function buildPublicFilesAndFolders () {
-        var path = 'gen-apps/' + app.name + '/public';
+        let path = 'gen-apps/' + app.name + '/public';
 
-        mkdirp(path, function (err) {
+        mkdirp(path, (err) => {
             if (err) {
                 console.error(err);
             } else {
                 // build index.html file with its contents
-                fs.writeFile((path + '/index.html'), indexBuilder.buildIndexFile(app.name), function (err) {
+                fs.writeFile((path + '/index.html'), indexBuilder.buildIndexFile(app.name), (err) => {
                     if (err) {
                         console.error(err);
                     } else {
@@ -140,12 +140,12 @@
                 });
 
                 // Build js folder
-                mkdirp(path+'/js/controllers', function (err) {
+                mkdirp(path+'/js/controllers', (err) => {
                     if (err) {
                         console.error(err);
                     } else {
                         // Build inner app.js file
-                        fs.writeFile((path + '/js/app.js'), moduleBuilder.buildAppModule(app.name), function (err) {
+                        fs.writeFile((path + '/js/app.js'), moduleBuilder.buildAppModule(app.name), (err) => {
                             if (err) {
                                 console.error(err);
                             } else {
@@ -154,7 +154,7 @@
                         });
 
                         // Build out an angular controller
-                        fs.writeFile((path + '/js/controllers/testCtrl.js'), ctrlBuilder.buidCtrlFile(app.name), function (err) {
+                        fs.writeFile((path + '/js/controllers/testCtrl.js'), ctrlBuilder.buidCtrlFile(app.name), (err) => {
                             if (err) {
                                 console.error(err);
                             } else {
@@ -165,12 +165,12 @@
                 });
 
                 // Build css folder
-                mkdirp(path+'/css', function (err) {
+                mkdirp(path+'/css', (err) => {
                     if (err) {
                         console.error(err);
                     } else {
                         // Build out custom css file
-                        fs.writeFile((path + '/css/main.css'), cssBuilder.buildCss(), function (err) {
+                        fs.writeFile((path + '/css/main.css'), cssBuilder.buildCss(), (err) => {
                             if (err) {
                                 console.error(err);
                             } else {
@@ -185,10 +185,10 @@
     };
 
     function buildUnitTestFiles () {
-        var path = 'gen-apps/' + app.name;
+        let path = 'gen-apps/' + app.name;
 
         // Build out a karma configuration file
-        fs.writeFile((path+'/karma.conf.js'), karmaConfigBuilder.buildConfig(), function (err) {
+        fs.writeFile((path+'/karma.conf.js'), karmaConfigBuilder.buildConfig(), (err) => {
             if (err) {
                 console.error(err);
             } else {
@@ -202,7 +202,7 @@
                 console.error(err);
             } else {
                 // Build out unit test file
-                fs.writeFile((path+'/test/testCtrl.test.js'), unitTestBuilder.buildTest(app.name), function (err) {
+                fs.writeFile((path+'/test/testCtrl.test.js'), unitTestBuilder.buildTest(app.name), (err) => {
                     if (err) {
                         console.error(err);
                     } else {
@@ -215,6 +215,6 @@
 
     // Export the build method
     module.exports = {
-        build: function () { build () }
+        build: () => { build () }
     };
 }());

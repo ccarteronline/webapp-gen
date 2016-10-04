@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var builder = require('./helpers/builder');
+    const builder = require('./helpers/builder');
 
     builder.build();
 

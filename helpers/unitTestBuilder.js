@@ -1,9 +1,9 @@
-(function() {
+(() => {
     'use strict';
 
     module.exports = {
-        buildTest: function (appName) {
-            var unitTest =
+        buildTest: (appName) => {
+            let unitTest =
 `(function () {
     'use strict';
     describe('Controller: TestCtrl', function () {

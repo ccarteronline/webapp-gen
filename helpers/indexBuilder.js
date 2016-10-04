@@ -1,9 +1,9 @@
-(function() {
+(() => {
     'use strict';
 
     module.exports = {
-        buildIndexFile: function (appName) {
-            var index =
+        buildIndexFile: (appName) => {
+            let index =
 `<!DOCTYPE html>
 <html>
     <head>

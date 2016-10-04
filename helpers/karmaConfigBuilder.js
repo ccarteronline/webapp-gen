@@ -1,9 +1,9 @@
-(function() {
+(() => {
     'use strict';
 
     module.exports = {
-        buildConfig: function () {
-            var config =
+        buildConfig: () => {
+            let config =
 `// Karma configuration
 module.exports = function(config) {
   config.set({
