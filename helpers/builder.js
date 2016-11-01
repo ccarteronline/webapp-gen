@@ -3,7 +3,6 @@
     const prompt = require('prompt');
     const fs = require('fs');
     const mkdirp = require('mkdirp');
-    const winston = require('winston');
     const packageJsonBuilder = require('./packageMangerBuilder');
     const mainBuilder = require('./mainBuilder');
     const indexBuilder = require('./indexBuilder');
@@ -82,7 +81,6 @@
             if (err) {
                 console.error(err);
             } else {
-                winston.log('error', 'Created App folder');
                 console.log('Created App folder..');
                 // Set options in package files.
                 packageJsonBuilder.changeName(app.name);
